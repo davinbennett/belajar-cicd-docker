@@ -1,10 +1,17 @@
-def greet(name):
-    return f"Hello, {name}!"
+from flask import Flask
+
+app = Flask(__name__)
 
 
+@app.route("/")
+def home():
+    return "Hello, Hai!"
+
+
+@app.route("/add/<int:a>/<int:b>")
 def add(a, b):
-    return a + b
+    return str(a + b)
 
 
 if __name__ == "__main__":
-    print(greet("Hai"))
+    app.run(host="0.0.0.0", port=5000)
